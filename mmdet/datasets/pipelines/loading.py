@@ -60,7 +60,8 @@ class LoadImageFromFile:
 
         if results['img_prefix'] is not None:
             filename = osp.join(results['img_prefix'],
-                                results['img_info']['filename'])
+                                results['img_info']['filename'].lstrip('/')) # results['img_info']['filename'] 的值是类似 '/3791_17234m.jpg'，这是一个以 / 开头的绝对路径，加入.lstrip('/') 会移除/
+            # print('filename: ', filename)     
         else:
             filename = results['img_info']['filename']
 
